@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DaFonte Distribuidora - Distribuidor exclusivo Minalba. Água, Gás e Bebidas em Recife, Salvador, Fortaleza e regiões.">
+    <meta name="theme-color" content="#0284c7">
+    <title>DaFonte Distribuidora | Qualidade e Confiança</title>
+    
+    <!-- Fontes (Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animações -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN SYSTEM 3.0 (Enterprise) --- */
+        :root {
+            --primary: #0284c7;       /* Azul Oceano */
+            --primary-dark: #0369a1;
+            --primary-light: #e0f2fe;
+            --accent: #0ea5e9;        /* Sky Blue */
+            
+            --success: #10b981;
+            --dark: #0f172a;          /* Slate 900 */
+            --text: #475569;          /* Slate 600 */
+            --gray-light: #f8fafc;
+            --white: #ffffff;
+            
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            
+            --glass: rgba(255, 255, 255, 0.8);
+            --blur: blur(12px);
+        }
+
+        /* --- RESET & LAYOUT FIXES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html, body {
+            width: 100%;
+            overflow-x: hidden; /* Remove rolagem lateral */
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            background-color: var(--gray-light);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 { color: var(--dark); font-weight: 700; line-height: 1.2; }
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; font-family: inherit; }
+        input, textarea, select { font-family: inherit; }
+
+        .container { 
+            width: 90%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            position: relative; /* Contexto para evitar overflow */
+        }
+        .section-padding { padding: 80px 0; }
+        
+        /* Titulos de Seção */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 15px; position: relative; display: inline-block; }
+        .section-header h2::after {
+            content: ''; display: block; width: 60px; height: 4px; 
+            background: var(--primary); margin: 10px auto 0; border-radius: 2px;
+        }
+        .section-header p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: var(--shadow-sm); height: 80px; display: flex; align-items: center;
+        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Logo atualizado para imagem */
+        .logo { display: flex; align-items: center; }
+        .logo img { max-height: 55px; width: auto; }
+
+        .nav-desktop { display: flex; gap: 25px; align-items: center; }
+        .nav-desktop a { color: var(--dark); font-weight: 600; font-size: 0.95rem; }
+        .nav-desktop a:hover { color: var(--primary); }
+
+        /* --- HEADER RIGHT SIDE (Socials + Button + Toggle) --- */
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        .header-socials { display: flex; gap: 15px; }
+        .header-socials a { color: var(--primary); font-size: 1.3rem; transition: 0.3s; display: flex; align-items: center; }
+        .header-socials a:hover { color: var(--primary-dark); transform: translateY(-2px); }
+
+        .btn-header {
+            background: var(--primary); color: white !important;
+            padding: 10px 24px; border-radius: var(--radius-full);
+            font-weight: 700; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+        }
+        .btn-header:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        .mobile-toggle { font-size: 1.5rem; color: var(--dark); display: none; cursor: pointer; margin-left: 10px; }
+
+        /* --- HERO RENOVADA (Modern & Compact) --- */
+        .hero {
+            /* Flexível para caber na tela */
+            min-height: 85vh; 
+            display: flex;
+            align-items: center;
+            padding-top: 100px; /* Compensa o header fixo */
+            padding-bottom: 60px; /* Aumentado um pouco para equilíbrio */
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Elementos decorativos de fundo */
+        .hero-bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .shape-1 {
+            width: 400px; height: 400px;
+            background: rgba(14, 165, 233, 0.15);
+            top: -50px; right: -100px;
+        }
+        .shape-2 {
+            width: 300px; height: 300px;
+            background: rgba(37, 211, 102, 0.1);
+            bottom: -50px; left: -50px;
+        }
+
+        .hero-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; /* Aumentado de 20px para 60px para dar mais respiro */
+            align-items: center; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        .hero-text h1 { 
+            font-size: 3rem; 
+            margin-bottom: 25px; /* Aumentado de 15px */
+            letter-spacing: -1.5px; 
+            line-height: 1.1; 
+            color: var(--dark);
+        }
+        .hero-text span { 
+            color: var(--primary); 
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-text p { 
+            font-size: 1.1rem; 
+            margin-bottom: 45px; /* Aumentado de 30px */
+            color: #64748b; 
+            max-width: 90%; 
+            line-height: 1.6; 
+        }
+        
+        .hero-btns { display: flex; gap: 25px; flex-wrap: wrap; } /* Gap aumentado */
+        
+        /* Ajuste de tamanho para garantir lado a lado */
+        .btn-lg {
+            padding: 15px 30px; 
+            border-radius: var(--radius-full);
+            font-weight: 700; font-size: 1.1rem; /* Fonte ajustada */
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: all 0.3s ease;
+            min-width: 160px; /* Largura mínima para consistência */
+        }
+
+        .btn-primary-lg { background: var(--primary); color: white; box-shadow: 0 10px 20px -5px rgba(2, 132, 199, 0.4); }
+        
+        /* Botão Pedir Agora - Verde Sólido */
+        .btn-success-lg { 
+            background: #25D366; /* Verde WhatsApp Sólido */
+            color: white; 
+            border: none;
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.5); /* Sombra verde */
+            animation: soft-pulse 3s infinite;
+        }
+
+        .btn-primary-lg:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 15px 30px -5px rgba(2, 132, 199, 0.5); }
+        
+        .btn-success-lg:hover { 
+            background: #1da851; /* Verde mais escuro no hover */
+            color: white;
+            transform: scale(1.05); 
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+            animation: none; 
+        }
+
+        /* Wrapper da Imagem */
+        .hero-img-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Nova animação de pulso azul ao fundo (Glow) */
+        @keyframes pulse-blue-glow {
+            0% { 
+                transform: translate(-50%, -50%) scale(0.85);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.15);
+                opacity: 0.3; /* Fica mais transparente ao expandir */
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(0.85);
+                opacity: 0.6;
+            }
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            /* Tamanho do brilho */
+            width: 120%; 
+            height: 120%;
+            max-width: 600px; /* Limite para não ficar gigante */
+            max-height: 600px;
+            
+            /* Gradiente Azul Radial */
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 0; /* Atrás da imagem */
+            pointer-events: none;
+            
+            animation: pulse-blue-glow 3s infinite ease-in-out;
+        }
+
+        .hero-img-wrapper img { 
+            position: relative;
+            z-index: 1;
+            border-radius: var(--radius-lg); 
+            
+            /* Tamanho Aumentado */
+            max-height: 580px; 
+            width: auto;
+            max-width: 100%;
+            
+            /* Apenas sombra estática agora, sem flutuação */
+            filter: drop-shadow(0 20px 40px rgba(2, 132, 199, 0.2));
+            transition: all 0.5s ease;
+        }
+        
+        /* Efeito extra ao passar o mouse na imagem */
+        .hero-img-wrapper img:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 30px 60px rgba(2, 132, 199, 0.3));
+        }
+
+        /* --- APP SECTION REDESIGN (Modern Enterprise Style) --- */
+        .app-section { 
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); 
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decoração de fundo sutil */
+        .app-bg-blob {
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(255,255,255,0) 70%);
+            top: -200px; left: -200px;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .app-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* Texto esq, Grid dir */
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Coluna da Esquerda (Texto + CTA) */
+        .app-text-side { text-align: left; }
+        
+        .app-text-side h2 { 
+            font-size: 2.8rem; 
+            margin-bottom: 20px; 
+            line-height: 1.1; 
+            color: var(--dark);
+        }
+        
+        .app-text-side p { 
+            font-size: 1.1rem; 
+            color: #64748b; 
+            margin-bottom: 40px; 
+            max-width: 90%;
+            line-height: 1.6;
+        }
+
+        .app-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        /* Coluna da Direita (Grid de Benefícios) */
+        .modern-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Dois por linha */
+            gap: 25px;
+        }
+
+        .modern-card {
+            background: white;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.02);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.08), 0 10px 10px -5px rgba(0,0,0,0.02);
+            border-color: var(--primary-light);
+        }
+
+        .modern-icon {
+            width: 55px; height: 55px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            color: var(--primary);
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            transition: 0.3s;
+        }
+
+        .modern-card:hover .modern-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .modern-content h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+        .modern-content p { font-size: 0.9rem; color: #64748b; line-height: 1.5; }
+
+        /* Estilo do Selo Moderno (Novo Visual Dark Premium) */
+        .app-download-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            
+            background: var(--dark); /* Fundo Escuro para destaque */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+            padding: 12px 28px;
+            border-radius: 50px; /* Formato de pílula completo */
+            
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.4); /* Sombra elegante */
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            max-width: 340px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Efeito de brilho ao passar o mouse */
+        .app-download-badge::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .app-download-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(2, 132, 199, 0.5); /* Sombra azul no hover */
+            border-color: var(--primary);
+            background: #1e293b;
+        }
+        
+        .app-download-badge:hover::before {
+            left: 100%;
+        }
+
+        .badge-app-icon-container {
+            width: 48px; height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--success); /* Verde WhatsApp */
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            transition: 0.3s;
+        }
+        
+        .app-download-badge:hover .badge-app-icon-container {
+            background: var(--success);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .badge-app-text { display: flex; flex-direction: column; }
+        
+        .badge-app-text span {
+            font-size: 0.75rem;
+            color: #94a3b8; /* Cinza claro */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+        
+        .badge-app-text strong {
+            font-size: 1.1rem;
+            color: white; /* Texto branco */
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        
+        .badge-arrow {
+            margin-left: auto; 
+            color: #94a3b8;
+            transition: 0.3s;
+        }
+        
+        .app-download-badge:hover .badge-arrow {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .store-buttons { display: flex; gap: 15px; }
+        .store-buttons img { height: 42px; cursor: pointer; transition: 0.2s; opacity: 0.9; }
+        .store-buttons img:hover { transform: translateY(-2px); opacity: 1; }
+
+        /* Responsividade Específica da Seção App */
+        @media (max-width: 992px) {
+            .app-wrapper {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+            .app-text-side { text-align: center; }
+            .app-text-side p { margin: 0 auto 30px; }
+            .app-actions { align-items: center; }
+            
+            /* Mantém o grid 2 colunas no tablet, mas pode virar 1 no celular muito pequeno */
+            @media (max-width: 500px) {
+                .modern-grid { grid-template-columns: 1fr; }
+            }
+        }
+
+        /* --- BENEFITS (Health) --- */
+        .benefits { background: white; border-bottom: 1px solid #e2e8f0; }
+        .benefits-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px; text-align: center;
+        }
+        .benefit-card { padding: 20px; transition: 0.3s; }
+        .benefit-card:hover { transform: translateY(-5px); }
+        .benefit-icon {
+            width: 70px; height: 70px; margin: 0 auto 15px;
+            background: var(--primary-light); color: var(--primary);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+        }
+        .benefit-card h4 { font-size: 1.2rem; margin-bottom: 8px; }
+        .benefit-card p { font-size: 0.95rem; color: #64748b; }
+
+        /* --- PRODUCTS REDESIGN (Modern List View - 2 Per Row) --- */
+        .products { background: #f8fafc; position: relative; z-index: 2; }
+        
+        /* TABS STYLING */
+        .prod-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 2px solid #e2e8f0;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: #64748b;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(2, 132, 199, 0.3);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .minalba-desc {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.05rem;
+            color: #475569;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .prod-grid {
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); /* 2 Colunas Fixas */
+            gap: 30px;
+        }
+
+        .prod-card {
+            background: white; 
+            border-radius: 24px; 
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03); 
+            transition: all 0.3s ease; 
+            border: 1px solid #f1f5f9;
+            
+            /* Layout Horizontal */
+            display: flex; 
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prod-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); 
+            border-color: var(--primary-light); 
+        }
+        
+        /* Container da Imagem (Esquerda) */
+        .prod-img { 
+            width: 110px; 
+            height: 110px; 
+            display: flex; align-items: center; justify-content: center; 
+            background: #f8fafc; 
+            border-radius: 18px;
+            flex-shrink: 0;
+            margin-bottom: 0; /* Remove margem antiga */
+        }
+        .prod-img img { max-height: 90px; transition: 0.3s; }
+        .prod-card:hover .prod-img img { transform: scale(1.1) rotate(5deg); }
+
+        /* Informações (Centro) */
+        .prod-info { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            text-align: left;
+        }
+        .prod-brand { 
+            font-size: 0.7rem; 
+            font-weight: 800; 
+            color: var(--primary); 
+            text-transform: uppercase; 
+            margin-bottom: 4px; 
+            letter-spacing: 0.5px; 
+        }
+        .prod-info h3 { 
+            font-size: 1.15rem; 
+            margin-bottom: 6px; 
+            color: var(--dark); 
+            font-weight: 700; 
+            line-height: 1.2;
+        }
+        .prod-info p { 
+            font-size: 0.9rem; 
+            color: #64748b; 
+            margin-bottom: 0; 
+            line-height: 1.4; 
+        }
+
+        /* Ação (Direita) */
+        .prod-action { 
+            margin-top: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 5px;
+            min-width: auto;
+            justify-content: center;
+        }
+        
+        .prod-action span {
+            font-size: 0.65rem; color: #94a3b8; font-weight: 700; text-transform: uppercase;
+        }
+
+        .btn-zap-sm {
+            width: 42px; height: 42px; 
+            border-radius: 12px; /* Quadrado arredondado mais moderno */
+            background: #25D366; color: white;
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.2rem;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+        }
+        .btn-zap-sm:hover { transform: scale(1.1); background: #1da851; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3); }
+
+        /* Responsividade para Produtos */
+        @media (max-width: 768px) {
+            .prod-grid { grid-template-columns: 1fr; } /* 1 por linha no mobile */
+        }
+
+        /* --- ABOUT & STATS (Moved after Products) --- */
+        .about-section { background: white; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-text h3 { font-size: 2.2rem; margin-bottom: 20px; color: var(--primary-dark); }
+        .about-text p { margin-bottom: 20px; text-align: justify; color: #475569; }
+        
+        .stats-row { display: flex; gap: 40px; margin-top: 30px; }
+        .stat-item h4 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0; line-height: 1; }
+        .stat-item span { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+
+        /* --- LOCATIONS (Map style) --- */
+        .locations-section { background: var(--dark); color: white; padding: 60px 0; text-align: center; }
+        .locations-section h2 { color: white; margin-bottom: 40px; }
+        .loc-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
+        .loc-card {
+            background: rgba(255,255,255,0.1); padding: 25px 35px; border-radius: var(--radius-md);
+            backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;
+        }
+        .loc-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-5px); }
+        .loc-card i { font-size: 1.8rem; margin-bottom: 15px; color: var(--accent); }
+        .loc-card h4 { color: white; margin-bottom: 5px; font-size: 1.2rem; }
+        .loc-card small { color: #cbd5e1; font-size: 0.9rem; }
+
+        /* --- APP SECTION --- */
+        .app-section { background: #e0f2fe; padding: 60px 0; overflow: hidden; }
+        .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .app-badges { display: flex; gap: 15px; margin-top: 20px; }
+        .app-badges img { height: 45px; cursor: pointer; transition: 0.2s; }
+        .app-badges img:hover { transform: translateY(-3px); }
+
+        /* --- CONTACT FORM --- */
+        .contact-section { background: white; }
+        .form-box {
+            max-width: 700px; margin: 0 auto; background: white;
+            padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+            border: 1px solid #f1f5f9;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .form-control {
+            width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 8px;
+            font-size: 1rem; transition: 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+        .btn-submit {
+            width: 100%; background: var(--dark); color: white; padding: 15px;
+            border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-submit:hover { background: var(--primary); }
+
+        /* --- FOOTER --- */
+        footer { background: #1e293b; color: #94a3b8; padding: 80px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 60px; }
+        .footer-col h4 { color: white; margin-bottom: 25px; font-size: 1.2rem; }
+        .footer-col a { color: #94a3b8; display: block; margin-bottom: 12px; transition: 0.3s; }
+        .footer-col a:hover { color: white; padding-left: 5px; }
+        .footer-contact li { margin-bottom: 15px; display: flex; gap: 10px; align-items: center; }
+        .footer-contact i { width: 20px; color: var(--primary); }
+        
+        /* Animação de Pulso (Destaque) */
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3), 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3), 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3), 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 60px; height: 60px; background: #25D366; color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 999;
+            transition: all 0.4s ease;
+            
+            /* Estado inicial: oculto */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        /* Classe para mostrar o botão */
+        .whatsapp-float.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            /* Ativa a animação de pulso infinito */
+            animation: pulse-green 2s infinite;
+        }
+
+        .whatsapp-float:hover { 
+            transform: scale(1.1); 
+            /* Pausa a animação ao passar o mouse */
+            animation: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            /* Gap ajustado também no mobile */
+            .hero-grid, .about-grid, .app-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-img-wrapper { order: -1; margin-bottom: 25px; margin-top: 10px; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text p { margin: 0 auto 30px; }
+            .hero-btns, .app-badges, .stats-row { justify-content: center; }
+            
+            /* Header Mobile Adjustments */
+            .nav-desktop { display: none; }
+            .btn-header { display: none; } /* Oculta botão grande */
+            /* .header-socials permanece visível */
+            .mobile-toggle { display: block; }
+            
+            .stats-row { flex-wrap: wrap; gap: 20px; }
+            .loc-grid { gap: 15px; }
+            
+            /* Ajuste mobile para Hero caber na tela */
+            .hero { padding-top: 90px; padding-bottom: 60px; min-height: auto; } 
+            
+            /* Ajuste proporcional mobile para a imagem maior */
+            .hero-img-wrapper img { max-height: 320px; } 
+
+            /* Ajuste do Badge no Mobile */
+            .hero-app-badge {
+                top: auto;
+                right: auto;
+                left: 50%;
+                bottom: -40px; 
+                transform: translateX(-50%);
+                animation: soft-pulse 3s infinite;
+                width: max-content;
+                padding: 8px 16px;
+            }
+            
+            /* Override da animação para manter o translate X no mobile */
+             @keyframes soft-pulse-mobile {
+                0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+                50% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 15px 5px rgba(255,255,255,0); }
+                100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+            }
+            
+            .hero-app-badge {
+                animation: soft-pulse-mobile 3s infinite;
+            }
+        }
+        
+        /* Menu Mobile */
+        .mobile-menu {
+            position: fixed; top: 80px; left: 0; width: 100%; background: white;
+            padding: 20px; box-shadow: var(--shadow-md); transform: translateY(-150%);
+            transition: 0.3s ease-in-out; z-index: 998;
+        }
+        .mobile-menu.open { transform: translateY(0); }
+        .mobile-menu a { display: block; padding: 15px 0; border-bottom: 1px solid #f1f5f9; color: var(--dark); font-weight: 600; text-align: center; }
+        .mobile-menu a:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="https://pe.dafontedistribuidora.com.br/image/catalog/df-distribuidora.png" alt="DaFonte Distribuidora">
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="#home">Home</a>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#produtos">Nossos Produtos</a>
+                <a href="#locais">Onde estamos</a>
+                <a href="#app">App</a>
+                <a href="#contato">Fale Conosco</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="header-socials">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+                
+                <a href="https://wa.me/5581999999999" class="btn-header">
+                    <i class="fa-brands fa-whatsapp"></i> (81) 99677-5454
+                </a>
+
+                <div class="mobile-toggle" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="toggleMenu()">Home</a>
+        <a href="#sobre" onclick="toggleMenu()">Sobre Nós</a>
+        <a href="#produtos" onclick="toggleMenu()">Produtos</a>
+        <a href="#locais" onclick="toggleMenu()">Onde Estamos</a>
+        <a href="#app" onclick="toggleMenu()">App</a>
+        <a href="#contato" onclick="toggleMenu()">Contato</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Elementos decorativos de fundo -->
+        <div class="hero-bg-shape shape-1"></div>
+        <div class="hero-bg-shape shape-2"></div>
+
+        <div class="container hero-grid">
+            <div class="hero-text" data-aos="fade-right">
+                <h1>Sua água acabou? <br><span>A gente Resolve</span>.</h1>
+                <p>Água mineral e bebidas na sua porta em minutos. O melhor preço de Recife e região.</p>
+                <div class="hero-btns">
+                    <a href="tel:+558133415102" class="btn-lg btn-primary-lg"><i class="fa-solid fa-phone"></i> Ligar</a>
+                    <a href="https://wa.me/5581999999999" class="btn-lg btn-success-lg"><i class="fa-brands fa-whatsapp"></i> Pedir Agora</a>
+                </div>
+            </div>
+            
+            <div class="hero-img-wrapper" data-aos="fade-left">
+                <!-- Efeito de brilho pulsante ao fundo -->
+                <div class="hero-glow"></div>
+
+                <!-- Imagem principal -->
+                <img src="https://lh4.googleusercontent.com/proxy/1sloBrz5WGzFdd_pbdgMbDU1shRYlxCXpynGYnQt2FaZrXy_25k_p1DHdCkTY2xAJon4UGrybwEk9LbDg4GyTfeFfNmXUTVpeW1opU_FVQl5KBl5nqlj-BFP4MilxneRp8Mrdg5cR0uNaDz7Xkmn82-kKqg" alt="Produtos DaFonte Minalba">
+            </div>
+        </div>
+    </section>
+
+    <!-- App Advantages (Sessão Totalmente Renovada) -->
+    <section id="app" class="section-padding app-section">
+        <div class="app-bg-blob"></div>
+        
+        <div class="container app-wrapper">
+            
+            <!-- Coluna Esquerda: Texto e Download -->
+            <div class="app-text-side" data-aos="fade-right">
+                <h2>Baixe o App e <br><span style="color:var(--primary)">Economize Agora</span></h2>
+                <p>Muito mais que praticidade. Quem pede pelo aplicativo da DaFonte tem acesso a vantagens exclusivas e prioridade total na entrega.</p>
+                
+                <div class="app-actions">
+                    <!-- Selo de Destaque (Dark Style) -->
+                    <a href="#" class="app-download-badge">
+                        <div class="badge-app-icon-container">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div class="badge-app-text">
+                            <span>DISPONÍVEL PARA TODOS</span>
+                            <strong>Baixe Agora o App</strong>
+                        </div>
+                        <div class="badge-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    </a>
+
+                    <!-- Lojas -->
+                    <div class="store-buttons">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Direita: Grid Moderno 2x2 -->
+            <div class="modern-grid">
+                <!-- Card 1 -->
+                <div class="modern-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="modern-icon"><i class="fa-solid fa-tags"></i></div>
+                    <div class="modern-content">
+                        <h4>Descontos Exclusivos</h4>
+                        <p>Cupons e ofertas relâmpago que você só encontra no app.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="modern-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="modern-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                    <div class="modern-content">
+                        <h4>Entrega Prioritária</h4>
+                        <p>Fila expressa automática para pedidos via aplicativo.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="modern-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="modern-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <div class="modern-content">
+                        <h4>Rastreio Real</h4>
+                        <p>Acompanhe o deslocamento do entregador até sua porta.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="modern-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="modern-icon"><i class="fa-solid fa-repeat"></i></div>
+                    <div class="modern-content">
+                        <h4>Compra em 1 Clique</h4>
+                        <p>Repita seu último pedido em segundos, sem redigitar.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Products Section (Agora com Abas) -->
+    <section id="produtos" class="section-padding products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Produtos</h2>
+                <p>Selecione a marca e confira as opções disponíveis.</p>
+            </div>
+
+            <!-- Navegação por Abas -->
+            <div class="prod-tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'indaia')">Indaiá</button>
+                <button class="tab-btn" onclick="openTab(event, 'minalba')">Minalba</button>
+                <button class="tab-btn" onclick="openTab(event, 'outros')">Outros / Premium</button>
+            </div>
+
+            <!-- Conteúdo da Aba Indaiá -->
+            <div id="indaia" class="tab-content active">
+                <div class="prod-grid">
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=300" alt="Garrafão"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Indaiá</div>
+                            <h3>10L e 20L</h3>
+                            <p>Retornável. Ideal para casa e escritório.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1616118132534-381148898bb4?auto=format&fit=crop&w=300" alt="Pet 5L"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Indaiá</div>
+                            <h3>5 L sem gás</h3>
+                            <p>Pet. Econômica para famílias.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=300" alt="Pet 1.5L"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Indaiá</div>
+                            <h3>1,5 L</h3>
+                            <p>Pet. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1603394630850-69b3ca8121ca?auto=format&fit=crop&w=300" alt="330ml"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Indaiá</div>
+                            <h3>330ml</h3>
+                            <p>Pet. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=300" alt="500ml"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Indaiá</div>
+                            <h3>500ml</h3>
+                            <p>Pet. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1622483767128-3a4d30ee8e68?auto=format&fit=crop&w=300" alt="Lata"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Indaiá</div>
+                            <h3>269ml</h3>
+                            <p>Lata. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1589365278144-c9e705f843ba?auto=format&fit=crop&w=300" alt="Copo"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Indaiá</div>
+                            <h3>200ml</h3>
+                            <p>Copo. Sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo da Aba Minalba -->
+            <div id="minalba" class="tab-content">
+                <div class="minalba-desc">
+                    <i class="fa-solid fa-leaf" style="color:var(--success); margin-right:5px;"></i>
+                    De uma fonte única em Campos do Jordão para o país inteiro. Toda a água de Minalba vem de lá, Área de Preservação Ambiental que garante o frescor necessário!
+                </div>
+                <div class="prod-grid">
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1616118132534-381148898bb4?auto=format&fit=crop&w=300" alt="Pet 5L"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Minalba</div>
+                            <h3>5 L sem gás</h3>
+                            <p>Pet. Frescor da montanha.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=300" alt="Pet 1.5L"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Minalba</div>
+                            <h3>1,5 L</h3>
+                            <p>Pet. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=300" alt="510ml"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Minalba</div>
+                            <h3>510ml</h3>
+                            <p>Pet. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1603394630850-69b3ca8121ca?auto=format&fit=crop&w=300" alt="310ml Pet"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Minalba</div>
+                            <h3>310ml</h3>
+                            <p>Pet. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1622483767128-3a4d30ee8e68?auto=format&fit=crop&w=300" alt="Lata"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Minalba</div>
+                            <h3>310ml</h3>
+                            <p>Lata. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1625740822008-e45a8a9d169c?auto=format&fit=crop&w=300" alt="Vidro"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Minalba</div>
+                            <h3>300ml Premium</h3>
+                            <p>Vidro. Com ou sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1589365278144-c9e705f843ba?auto=format&fit=crop&w=300" alt="Copo"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Minalba</div>
+                            <h3>200ml</h3>
+                            <p>Copo. Sem gás.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo da Aba Outros (Premium & Bebidas) -->
+            <div id="outros" class="tab-content">
+                <div class="prod-grid">
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1625740822008-e45a8a9d169c?auto=format&fit=crop&w=300" alt="Perrier"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Perrier</div>
+                            <h3>Garrafa de Vidro 330ml</h3>
+                            <p>Água mineral gasosa natural (França).</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1546702330-d3840733d311?auto=format&fit=crop&w=300" alt="Acqua Panna"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Acqua Panna</div>
+                            <h3>Garrafa de Vidro 505ml</h3>
+                            <p>Recomendada por sommeliers.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300" alt="São Lourenço"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">São Lourenço</div>
+                            <h3>Garrafa de Vidro 300ml</h3>
+                            <p>Água natural da Mata Atlântica.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                    <div class="prod-card">
+                        <div class="prod-img"><img src="https://images.unsplash.com/photo-1622543925917-095a84bf8396?auto=format&fit=crop&w=300" alt="Night Power"></div>
+                        <div class="prod-info">
+                            <div class="prod-brand">Night Power</div>
+                            <h3>Energético 2L</h3>
+                            <p>Energia e disposição.</p>
+                        </div>
+                        <div class="prod-action"><a href="https://wa.me/5581999999999" class="btn-zap-sm"><i class="fa-brands fa-whatsapp"></i></a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Us Section (Agora depois dos Produtos) -->
+    <section id="sobre" class="section-padding about-section">
+        <div class="container about-grid">
+            <div class="about-img" data-aos="fade-right">
+                <!-- Imagem de Frota (placeholder premium) -->
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" alt="Frota DaFonte" style="border-radius:20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <h3>Sobre a DaFonte</h3>
+                <p>Com mais de <strong>20 anos de experiência</strong> no mercado, a Da Fonte é uma distribuidora exclusiva da <strong>Minalba</strong>, garantindo produtos de alta qualidade para quem valoriza o melhor em água mineral.</p>
+                <p>Contamos com uma frota moderna e eficiente, assegurando um transporte seguro e pontual. Atuamos em diversas regiões do Brasil, levando saúde e bem-estar para milhares de clientes.</p>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <h4>+20</h4>
+                        <span>Anos de História</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>5</h4>
+                        <span>Estados Atendidos</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <span>Satisfação</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Onde Estamos -->
+    <section id="locais" class="locations-section">
+        <div class="container">
+            <h2>Onde Estamos</h2>
+            <div class="loc-grid">
+                <div class="loc-card" data-aos="zoom-in">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <h4>Pernambuco</h4>
+                    <small>Recife e RMR</small>
+                </div>
+                <div class="loc-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>Bahia</h4>
+                    <small>Salvador</small>
+                </div>
+                <div class="loc-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>Ceará</h4>
+                    <small>Fortaleza</small>
+                </div>
+                <div class="loc-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>Sergipe</h4>
+                    <small>Aracaju</small>
+                </div>
+                <div class="loc-card" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>Pará</h4>
+                    <small>Belém</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="section-padding contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Fale Conosco</h2>
+                <p>Dúvidas, sugestões ou parcerias? Envie sua mensagem.</p>
+            </div>
+            <div class="form-box" data-aos="fade-up">
+                <form>
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" class="form-control" placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone / WhatsApp</label>
+                        <input type="tel" class="form-control" placeholder="(00) 00000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label>Assunto</label>
+                        <select class="form-control">
+                            <option>Selecione um assunto</option>
+                            <option>Fazer Pedido</option>
+                            <option>Trabalhe Conosco</option>
+                            <option>Financeiro</option>
+                            <option>Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensagem</label>
+                        <textarea class="form-control" rows="4" placeholder="Como podemos ajudar?"></textarea>
+                    </div>
+                    <button type="button" class="btn-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>DaFonte Distribuidora</h4>
+                    <p style="font-size:0.9rem; margin-bottom:15px;">
+                        Distribuidora exclusiva da Minalba. Proporcionando acesso a água mineral de alta qualidade com eficiência e pontualidade.
+                    </p>
+                    <div style="display:flex; gap:15px; font-size:1.2rem;">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegue</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#produtos">Nossos Produtos</a></li>
+                        <li><a href="#sobre">Sobre nós</a></li>
+                        <li><a href="#locais">Onde estamos</a></li>
+                        <li><a href="#contato">Fale conosco</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contatos</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-phone"></i> +55 81 3341-5102</li>
+                        <li><i class="fa-brands fa-whatsapp"></i> +55 81 9 9677-5454</li>
+                        <li><i class="fa-solid fa-envelope"></i> contato@dafonte.com.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #334155; padding-top: 20px; text-align: center; font-size: 0.85rem;">
+                &copy; 2024 DaFonte Distribuidora. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5581999999999" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+
+        // Lógica de Abas
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Lógica para mostrar o botão WhatsApp apenas após a rolagem
+        window.addEventListener('scroll', function() {
+            var whatsappBtn = document.querySelector('.whatsapp-float');
+            // Define o ponto de gatilho (aproximadamente a altura da primeira dobra/tela)
+            var triggerHeight = 500; 
+
+            if (window.scrollY > triggerHeight) {
+                whatsappBtn.classList.add('show');
+            } else {
+                whatsappBtn.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
